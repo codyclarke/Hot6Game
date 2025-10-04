@@ -22,4 +22,5 @@ func _process(delta: float) -> void:
 func _physics_process(delta: float) -> void:
 	move_and_slide()
 	if !is_on_floor():
-		velocity.y += stage.gravity
+		velocity.y = min(velocity.y + stage.gravity, stage.max_velocity)
+		print('velocity: ', velocity)
