@@ -15,11 +15,11 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	position.x += speed * Input.get_axis("move_left", "move_right")
-	if Input.is_action_just_pressed("jump"):
+	if is_on_floor() && Input.is_action_just_pressed("jump"):
 		velocity.y = jump_speed * -1
 	
 	
 func _physics_process(delta: float) -> void:
-	move_and_collide(velocity)
+	move_and_slide()
 	if !is_on_floor():
 		velocity.y += stage.gravity

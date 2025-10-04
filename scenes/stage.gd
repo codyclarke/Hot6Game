@@ -1,3 +1,3 @@
 extends Node2D
 
-var gravity : float = .98
+var gravity : float = 9.8
