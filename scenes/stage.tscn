@@ -1,0 +1,38 @@
+[gd_scene load_steps=7 format=3 uid="uid://d4xg3vi3wcge"]
+
+[ext_resource type="PackedScene" uid="uid://dpgvvdu16f4k4" path="res://scenes/player.tscn" id="1_8rem4"]
+[ext_resource type="Script" uid="uid://bi4dplw3jxtae" path="res://scenes/stage.gd" id="1_gi7kc"]
+
+[sub_resource type="Gradient" id="Gradient_knoaa"]
+offsets = PackedFloat32Array(0, 0.2846154)
+colors = PackedColorArray(4.1873755e-06, 0.6213653, 0.29638085, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_8rem4"]
+gradient = SubResource("Gradient_knoaa")
+fill_from = Vector2(0.58247423, 1)
+fill_to = Vector2(0.57216495, 0)
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_gi7kc"]
+diffuse_texture = SubResource("GradientTexture2D_8rem4")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gi7kc"]
+size = Vector2(790, 20)
+
+[node name="Stage" type="Node2D"]
+script = ExtResource("1_gi7kc")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(400, 400)
+scale = Vector2(14.47825, 14.380371)
+texture = SubResource("CanvasTexture_gi7kc")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(392, 784)
+scale = Vector2(1.0608902, 2.3923235)
+shape = SubResource("RectangleShape2D_gi7kc")
+
+[node name="Player" parent="." instance=ExtResource("1_8rem4")]
+position = Vector2(112, 384)
+jump_speed = 20.0
