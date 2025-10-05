@@ -1,18 +1,18 @@
 [gd_scene load_steps=4 format=3 uid="uid://dpgvvdu16f4k4"]
 
 [ext_resource type="Script" uid="uid://bgxn1p4stdpdx" path="res://scenes/player.gd" id="1_g2els"]
-[ext_resource type="Texture2D" uid="uid://dy6kkjk01g703" path="res://sprites/player.webp" id="2_qhqgy"]
+[ext_resource type="Texture2D" uid="uid://dd8k067wy4wxj" path="res://sprites/character_models/rudy/run.png" id="2_g2els"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dqkch"]
-size = Vector2(65, 131)
+size = Vector2(62, 101)
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_g2els")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.5, -0.5)
+position = Vector2(1, 0.5)
 shape = SubResource("RectangleShape2D_dqkch")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.25, 0.25)
-texture = ExtResource("2_qhqgy")
+scale = Vector2(3, 3)
+texture = ExtResource("2_g2els")
