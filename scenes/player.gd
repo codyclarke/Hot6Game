@@ -28,5 +28,5 @@ func _physics_process(delta: float) -> void:
 
 func spawn_projectile():
 	var bang = projectile.instantiate()
-	owner.add_child(bang)
 	bang.position = position
+	owner.add_child(bang)
