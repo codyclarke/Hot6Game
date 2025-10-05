@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 @onready var stage = $"../"
 var health: int = 5
-var speed: float = 200.0
+var speed: float = 500.0
 @export var jump_speed: float = 20.0
 
 # when object is initialized
@@ -18,5 +18,6 @@ func _physics_process(delta: float) -> void:
 	if !is_on_floor():
 		velocity.y = min(velocity.y + stage.gravity, stage.max_velocity)
 	position.x = lerp(position.x, position.x + speed * Input.get_axis("move_left", "move_right"),delta)
+	print(Input.get_axis("move_left", "move_right"))
 	if is_on_floor() && Input.is_action_just_pressed("jump"):
 		velocity.y = jump_speed * -1
