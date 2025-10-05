@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 @onready var stage = $"../"
 
+@export var character_name: String = FirstNamesTable.new().roll() + ' ' + LastNamesTable.new().roll()
 @export var health: int = 5
 @export var speed: float = 200.0
 @export var jump_speed: float = 20.0
@@ -13,7 +14,10 @@ func _init() -> void:
 	
 # when object is loaded into a scene
 func _ready() -> void:
-	pass
+	var name_label = Label.new()
+	name_label.text = character_name
+	name_label.position = Vector2(0, 100)
+	add_child(name_label)
 	
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("attack"):
