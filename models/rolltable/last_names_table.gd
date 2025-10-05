@@ -3,8 +3,8 @@ class_name LastNamesTable extends Node
 var _random = RandomNumberGenerator.new()
 var _names: Array[String] = [
 	"Horse",
-	"Günnsson",
-	"Caboose"
+	"Caboose",
+	"Inferno"
 ]
 
 func roll() -> String:
