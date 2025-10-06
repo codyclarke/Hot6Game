@@ -32,7 +32,7 @@ texture = ExtResource("3_kewym")
 2:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
 [sub_resource type="TileSet" id="TileSet_vcsse"]
-physics_layer_0/collision_layer = 1
+physics_layer_0/collision_layer = 5
 sources/0 = SubResource("TileSetAtlasSource_6c5u0")
 
 [node name="Stage" type="Node2D"]

@@ -17,3 +17,11 @@ func _physics_process(delta: float) -> void:
 
 func remove_projectile():
 	queue_free()
+
+func _on_body_entered(body: Node2D) -> void:
+	if (body.name == "TileMapLayer" || body.collision_layer == 3):
+		$Sprite2D.play("flame_hit")
+		speed = 0
+
+func _on_sprite_2d_animation_finished() -> void:
+	remove_projectile() # Replace with function body.
