@@ -12,7 +12,7 @@ static func create(first: String, last: String) -> CharacterState:
 	character.last_name = last
 	character.health = 5
 	character.speed = 200.0
-	character.jump_speed = 20.0
+	character.jump_speed = 500.0
 	return character
 
 func full_name() -> String:

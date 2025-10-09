@@ -29,4 +29,5 @@ func _physics_process(delta: float) -> void:
 func spawn_projectile():
 	var bang = projectile.instantiate()
 	bang.position = position
+	bang.scale *= 1.0-(randf()*0.2)-0.1
 	owner.add_child(bang)
