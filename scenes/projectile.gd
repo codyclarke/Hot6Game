@@ -1,6 +1,6 @@
 extends Area2D
 
-@export var speed: int = 300
+@export var speed: int = 350
 @export var rotation_degrees_per_second: float = 360
 @export var projectile_screen_buffer: int = 20
 @export var direction : int
