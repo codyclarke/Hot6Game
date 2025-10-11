@@ -11,7 +11,7 @@ static func create(first: String, last: String) -> CharacterState:
 	character.first_name = first
 	character.last_name = last
 	character.health = 5
-	character.speed = 200.0
+	character.speed = 250.0
 	character.jump_speed = 500.0
 	return character
 
