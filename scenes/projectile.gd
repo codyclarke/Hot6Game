@@ -3,12 +3,14 @@ extends Area2D
 @export var speed: int = 300
 @export var rotation_degrees_per_second: float = 360
 @export var projectile_screen_buffer: int = 20
+@export var direction : int
 
 @onready var _normal_position: Vector2 = position
 @onready var camera: Camera2D = $"../Camera2D"
-
+func _ready() -> void:
+	if direction == 0: direction = 1
 func _physics_process(delta: float) -> void:
-	_normal_position = Vector2(_normal_position.x + (speed * delta), _normal_position.y)
+	_normal_position = Vector2(_normal_position.x + (speed * delta *direction), _normal_position.y)
 	position.x = _normal_position.x + randi_range(-5, 5)
 	position.y = _normal_position.y + randi_range(-5, 5)
 	#checks width of the current viewport, and checks if projectile is outside of camera area.
