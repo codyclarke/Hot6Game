@@ -1,15 +1,15 @@
-class_name CharacterClass extends Node
+class_name CharacterTitle extends Node
 
 @export var title: String
 @export var prefix: String
 @export var suffix: String
 
-static func create(t: String, p: String, s: String) -> CharacterClass:
-	var char_class = CharacterClass.new()
-	char_class.title = t
-	char_class.prefix = p
-	char_class.suffix = s
-	return char_class
+static func create(t: String, p: String, s: String) -> CharacterTitle:
+	var char_title = CharacterTitle.new()
+	char_title.title = t
+	char_title.prefix = p
+	char_title.suffix = s
+	return char_title
 
 func formatted_prefix() -> String:
 	if (prefix.is_empty()):

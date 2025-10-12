@@ -10,10 +10,12 @@ var _names: Array[String] = [
 	"Freestyle",
 	"Horse",
 	"Inferno",
+	"Intensity",
 	"Omega",
-	"Mandalay",
+	"Manhattan",
 	"Mojito",
 	"Monsoon",
+	"Vandalay",
 	"Veracity",
 	"You-Know-It!"
 ]
