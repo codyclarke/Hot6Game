@@ -11,12 +11,8 @@ func _init() -> void:
 	pass
 	
 func _ready() -> void:
-	#var name_label = Label.new()
 	name_label.text = character_state.full_name()
-	#name_label.position = Vector2(0, -(player_sprite.get_rect().size.y/2)*player_sprite.scale.y-20.0)
-	
-	#add_child(name_label)
-	
+		
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("attack"):
 		spawn_projectile()

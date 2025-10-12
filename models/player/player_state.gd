@@ -2,6 +2,7 @@ class_name PlayerState extends Node
 
 var _first_names: FirstNamesTable = FirstNamesTable.new()
 var _last_names: LastNamesTable = LastNamesTable.new()
+var _titles: TitlesTable = TitlesTable.new()
 
 var _characters_history: Array[CharacterState] = []
 
@@ -10,6 +11,6 @@ func current_character() -> CharacterState:
 	return _characters_history[_characters_history.size() - 1]
 	
 func generate() -> CharacterState:
-	var character = CharacterState.create(_first_names.roll(), _last_names.roll())
+	var character = CharacterState.create(_first_names.roll(), _last_names.roll(), _titles.roll())
 	_characters_history.append(character)
 	return current_character()
