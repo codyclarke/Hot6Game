@@ -24,19 +24,19 @@ region = Rect2(56, 0, 28, 32)
 atlas = ExtResource("3_dqkch")
 region = Rect2(84, 0, 28, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_y4r1p"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_dqkch"]
 atlas = ExtResource("4_qlg0r")
 region = Rect2(0, 0, 36, 40)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_d2wvv"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_qlg0r"]
 atlas = ExtResource("4_qlg0r")
 region = Rect2(36, 0, 36, 40)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_3v2ag"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_y4r1p"]
 atlas = ExtResource("4_qlg0r")
 region = Rect2(72, 0, 36, 40)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_jej6c"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_d2wvv"]
 atlas = ExtResource("4_qlg0r")
 region = Rect2(108, 0, 36, 40)
 
@@ -69,16 +69,16 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_dqkch")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qlg0r")
+}, {
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_y4r1p")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_d2wvv")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_3v2ag")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_jej6c")
 }],
 "loop": true,
 "name": &"run",
@@ -102,8 +102,8 @@ shape = SubResource("RectangleShape2D_dqkch")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, 1)
 sprite_frames = SubResource("SpriteFrames_f1ej7")
-animation = &"idle"
-frame_progress = 0.29160336
+animation = &"run"
+frame_progress = 0.6932351
 
 [node name="NameLabel" type="Label" parent="."]
 anchors_preset = -1
@@ -115,3 +115,6 @@ grow_horizontal = 2
 label_settings = SubResource("LabelSettings_qlg0r")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="GunLocation" type="Node2D" parent="."]
+position = Vector2(14, -5)
