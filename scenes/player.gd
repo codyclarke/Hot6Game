@@ -40,7 +40,7 @@ func _physics_process(delta: float) -> void:
 
 func spawn_projectile():
 	var bang = projectile.instantiate()
-	bang.position = position
+	bang.position = Vector2(position.x+(32*character_direction),position.y-8)
 	bang.scale *= 1.0-(randf()*0.2)-0.1
 	bang.direction = character_direction
 	if bang.direction < 0:
