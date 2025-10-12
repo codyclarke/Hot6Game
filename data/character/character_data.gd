@@ -1,5 +1,6 @@
-class_name CharacterState extends Node
+class_name CharacterData extends Node
 
+var character_id: int = GlobalId.generate() 
 @export var first_name: String
 @export var last_name: String
 @export var title: CharacterTitle
@@ -7,11 +8,11 @@ class_name CharacterState extends Node
 @export var speed: float
 @export var jump_speed: float
 
-static func create(first: String, last: String, title: CharacterTitle) -> CharacterState:
+static func create(first: String, last: String, t: CharacterTitle) -> CharacterData:
 	var character = new()
 	character.first_name = first
 	character.last_name = last
-	character.title = title
+	character.title = t
 	character.health = 5
 	character.speed = 250.0
 	character.jump_speed = 500.0

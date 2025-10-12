@@ -1,17 +1,21 @@
 extends CharacterBody2D
 
+signal turned_left(character_id: int)
+signal turned_right(character_id: int)
+
 @onready var stage = $"../"
 @onready var player_sprite = $AnimatedSprite2D
 @onready var name_label :Label = $NameLabel
 
-@export var character_state: CharacterState = PlayerState.new().generate()
+@export var character_data: CharacterData = PlayerData.new().generate()
 @export var projectile: PackedScene = preload("res://scenes/projectile.tscn")
+
 var character_direction :float = 0.0
 func _init() -> void:
 	pass
 	
 func _ready() -> void:
-	name_label.text = character_state.full_name()
+	name_label.text = character_data.full_name()
 		
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("attack"):
@@ -30,9 +34,9 @@ func _physics_process(delta: float) -> void:
 		player_sprite.flip_h = false
 	else:
 		player_sprite.play("idle")
-	position.x = lerp(position.x, position.x + character_state.speed * character_direction,delta)
+	position.x = lerp(position.x, position.x + character_data.speed * character_direction,delta)
 	if is_on_floor() && Input.is_action_just_pressed("jump"):
-		velocity.y = character_state.jump_speed * -1
+		velocity.y = character_data.jump_speed * -1
 
 func spawn_projectile():
 	var bang = projectile.instantiate()
