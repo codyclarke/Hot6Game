@@ -8,19 +8,23 @@ extends CharacterBody2D
 
 @export var character_data: CharacterData = PlayerData.new().generate()
 @onready var projectile: PackedScene = preload("res://scenes/projectile.tscn")
-	
+
+var start_position : Vector2
+
 func _ready() -> void:
 	name_label.text = character_data.full_name()
-		
+	start_position = position
+
 func _process(_delta: float) -> void:
 	velocity.x = Input.get_axis("move_left", "move_right") * character_data.speed
-	velocity.y = _calculate_velocity_y()
 	character_state.moving(velocity)
 	move_and_slide()
 	if Input.is_action_just_pressed("attack"):
 		spawn_projectile()
 		
-
+func _physics_process(delta: float) -> void:
+	velocity.y = _calculate_velocity_y()
+	
 func _calculate_velocity_y() -> float:
 	if is_on_floor() && Input.is_action_just_pressed("jump"):
 		return character_data.jump_speed * -1
@@ -29,9 +33,12 @@ func _calculate_velocity_y() -> float:
 	else:
 		return min(velocity.y + stage.gravity, stage.max_velocity)
 
-
 func spawn_projectile():
 	var direction = 1 if character_state.look_direction == CharacterState.LookDirection.RIGHT else -1
 	var bang = projectile.instantiate()
 	bang.init(gun_location.global_position, direction)
 	owner.add_child(bang)
+
+#used in stage_boundaries.gd to reset the position if the player goes out of bounds
+func reset_position():
+	position = start_position

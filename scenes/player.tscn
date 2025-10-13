@@ -90,6 +90,8 @@ animations = [{
 
 [sub_resource type="SystemFont" id="SystemFont_dqkch"]
 font_names = PackedStringArray("Exo 2")
+subpixel_positioning = 0
+multichannel_signed_distance_field = true
 
 [sub_resource type="LabelSettings" id="LabelSettings_qlg0r"]
 font = SubResource("SystemFont_dqkch")
