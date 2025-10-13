@@ -1,5 +1,9 @@
 extends CharacterBody2D
 
+signal move_left(velocity: float, is_on_floor: bool)
+signal move_right(velocity: float, is_on_: bool)
+signal stop(is_on_ground: bool)
+
 @onready var stage = $"../"
 @onready var player_sprite = $PlayerSprite
 @onready var name_label: Label = $NameLabel
@@ -10,11 +14,6 @@ extends CharacterBody2D
 
 enum LookDirection { LEFT, RIGHT }
 enum ActionState { RUN, JUMP, IDLE }
-const _animations = {
-	ActionState.RUN : 'run',
-	ActionState.JUMP : 'jump',
-	ActionState.IDLE : 'idle' ,
-}
 
 var _look_direction: LookDirection = LookDirection.RIGHT
 var _move_speed: float = 0 # TODO: this probably duplicates velocity, which could be modified directly
@@ -30,11 +29,9 @@ func _process(_delta: float) -> void:
 func _physics_process(delta: float) -> void:
 	move_and_slide()
 	_update_state()
-	player_sprite.flip_h = true if _look_direction == LookDirection.LEFT else false
 	if _action_state == ActionState.JUMP:
 		velocity.y = min(velocity.y + stage.gravity, stage.max_velocity)
 	position.x = lerp(position.x, position.x + character_data.speed * _move_speed, delta)
-	player_sprite.play(_animations[_action_state])
 
 		
 func _update_state() -> void:
@@ -54,15 +51,17 @@ func _calculate_action_state(input_speed: float) -> ActionState:
 	
 func _calculate_look_direction(input_speed: float) -> LookDirection:
 	if input_speed < 0:
+		move_left.emit(input_speed, is_on_floor())
 		return LookDirection.LEFT
 	elif input_speed > 0:
+		move_right.emit(input_speed, is_on_floor())
 		return LookDirection.RIGHT
 	else:
+		stop.emit(is_on_floor())
 		return _look_direction
 	
 func _calculate_move_speed(input_speed: float, action_state: ActionState) -> float:
 	match action_state:
-		ActionState.JUMP: return _move_speed
 		_: return input_speed
 
 func spawn_projectile():
