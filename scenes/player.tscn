@@ -94,7 +94,6 @@ font_size = 8
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_g2els")
-projectile = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-2, 3.5)
@@ -118,3 +117,5 @@ vertical_alignment = 1
 
 [node name="GunLocation" type="Node2D" parent="."]
 position = Vector2(14, -5)
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]
