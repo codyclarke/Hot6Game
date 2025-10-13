@@ -13,6 +13,7 @@ var _names: Array[String] = [
 	"Eagle",
 	"George Washington",
 	"Gunther",
+	"Jazz",
 	"Julian",
 	"Juice",
 	"Kip",
