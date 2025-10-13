@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://d4xg3vi3wcge"]
+[gd_scene load_steps=14 format=4 uid="uid://d4xg3vi3wcge"]
 
 [ext_resource type="PackedScene" uid="uid://dpgvvdu16f4k4" path="res://scenes/player.tscn" id="1_8rem4"]
 [ext_resource type="Script" uid="uid://bi4dplw3jxtae" path="res://scenes/stage.gd" id="1_gi7kc"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://nakxk67qh7dl" path="res://sprites/stage/platforms.png" id="3_vcsse"]
 [ext_resource type="Texture2D" uid="uid://bx77i0ld64dpm" path="res://sprites/stage/walls.png" id="4_2so7o"]
 [ext_resource type="Script" uid="uid://co3on8i2asy04" path="res://scenes/camera_2d.gd" id="4_6c5u0"]
+[ext_resource type="Script" uid="uid://ry8dqmilblcx" path="res://scenes/stage_boundaries.gd" id="7_st0q7"]
 
 [sub_resource type="Gradient" id="Gradient_knoaa"]
 offsets = PackedFloat32Array(0, 0.6208113)
@@ -244,7 +245,7 @@ scale = Vector2(14.47825, 14.380371)
 texture = SubResource("CanvasTexture_gi7kc")
 
 [node name="Buildings" type="Parallax2D" parent="Background"]
-scroll_scale = Vector2(1.2, 1.2)
+scroll_scale = Vector2(1.2, 0.8)
 repeat_size = Vector2(1024, 0)
 repeat_times = 3
 
@@ -266,3 +267,12 @@ scale = Vector2(3, 3)
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(400, 304)
 script = ExtResource("4_6c5u0")
+
+[node name="StageBoundaries" type="Area2D" parent="."]
+script = ExtResource("7_st0q7")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StageBoundaries"]
+position = Vector2(-50, 0)
+polygon = PackedVector2Array(-99, -638, -93, 605, 1802, 595, 3883, 605, 3884, -661, 1777, -654)
+
+[connection signal="body_exited" from="StageBoundaries" to="StageBoundaries" method="_on_body_exited"]
