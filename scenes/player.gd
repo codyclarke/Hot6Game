@@ -1,53 +1,37 @@
 extends CharacterBody2D
 
-signal turned_left(character_id: int)
-signal turned_right(character_id: int)
-
 @onready var stage = $"../"
-@onready var player_sprite = $AnimatedSprite2D
-@onready var name_label :Label = $NameLabel
+@onready var player_sprite = $PlayerSprite
+@onready var name_label: Label = $NameLabel
+@onready var gun_location: Node2D = $GunLocation
+@onready var character_state = $CharacterState
 
 @export var character_data: CharacterData = PlayerData.new().generate()
-@export var projectile: PackedScene = preload("res://scenes/projectile.tscn")
-
-var character_direction :float = 0.0
-func _init() -> void:
-	pass
+@onready var projectile: PackedScene = preload("res://scenes/projectile.tscn")
 	
 func _ready() -> void:
 	name_label.text = character_data.full_name()
 		
 func _process(_delta: float) -> void:
+	velocity.x = Input.get_axis("move_left", "move_right") * character_data.speed
+	velocity.y = _calculate_velocity_y()
+	character_state.moving(velocity)
+	move_and_slide()
 	if Input.is_action_just_pressed("attack"):
 		spawn_projectile()
+		
 
-func _physics_process(delta: float) -> void:
-	move_and_slide()
-	character_direction = Input.get_axis("move_left", "move_right")
-	if !is_on_floor():
-		jump()
-	elif(character_direction<0):
-		player_sprite.play("run")
-		player_sprite.flip_h = true
-	elif character_direction>0:
-		player_sprite.play("run")
-		player_sprite.flip_h = false
-	else:
-		player_sprite.play("idle")
-	position.x = lerp(position.x, position.x + character_data.speed * character_direction,delta)
+func _calculate_velocity_y() -> float:
 	if is_on_floor() && Input.is_action_just_pressed("jump"):
-		velocity.y = character_data.jump_speed * -1
+		return character_data.jump_speed * -1
+	elif is_on_floor():
+		return 0
+	else:
+		return min(velocity.y + stage.gravity, stage.max_velocity)
+
 
 func spawn_projectile():
+	var direction = 1 if character_state.look_direction == CharacterState.LookDirection.RIGHT else -1
 	var bang = projectile.instantiate()
-	bang.position = Vector2(position.x+(32*character_direction),position.y-8)
-	bang.scale *= 1.0-(randf()*0.2)-0.1
-	bang.direction = character_direction
-	if bang.direction < 0:
-		bang.get_child(0).flip_h = true
+	bang.init(gun_location.global_position, direction)
 	owner.add_child(bang)
-
-func jump()->void:
-	velocity.y = min(velocity.y + stage.gravity, stage.max_velocity)
-	player_sprite.play("jump")
-	
