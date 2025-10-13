@@ -2,8 +2,11 @@ class_name LastNamesTable extends Node
 
 var _random = RandomNumberGenerator.new()
 var _names: Array[String] = [
+	"Adrenaline",
 	"Antares",
+	"Attitude",
 	"Book'Em",
+	"Bloater",
 	"Carbonara",
 	"Caboose",
 	"Chainsaw",
@@ -14,6 +17,7 @@ var _names: Array[String] = [
 	"Ferocious",
 	"Freestyle",
 	"Glasseater",
+	"Gymnasium",
 	"Horse",
 	"Inferno",
 	"Intensity",
@@ -22,9 +26,12 @@ var _names: Array[String] = [
 	"Manhattan",
 	"Mojito",
 	"Monsoon",
+	"Spittoon",
 	"Tarantula",
+	"Tittleman",
 	"Turtledove",
 	"Veracity",
+	"Strongbody",
 	"Whiplash",
 	"You-Know-It!",
 	"Zweihander",

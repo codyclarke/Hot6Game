@@ -4,8 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://d1o8vhu5uhll2" path="res://sprites/contra-jump.png" id="3_dqkch"]
 [ext_resource type="Texture2D" uid="uid://63mailhf5m4k" path="res://sprites/contra-idle.png" id="3_qlg0r"]
 [ext_resource type="Texture2D" uid="uid://ce305hfi7ujp2" path="res://sprites/contra-run.png" id="4_qlg0r"]
-[ext_resource type="Script" uid="uid://ux63oek03ptn" path="res://scenes/gun_location.gd" id="5_qlg0r"]
-[ext_resource type="Script" uid="uid://dy6dr8y040wyu" path="res://scenes/player_sprite.gd" id="5_tuyoq"]
+[ext_resource type="Script" path="res://scenes/gun_location.gd" id="5_qlg0r"]
+[ext_resource type="Script" path="res://scenes/player_sprite.gd" id="5_tuyoq"]
 [ext_resource type="Script" uid="uid://cnxbw3tv2wyv4" path="res://state/character_state.gd" id="7_fjrip"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dqkch"]

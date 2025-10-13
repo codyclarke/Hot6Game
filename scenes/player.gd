@@ -13,9 +13,8 @@ func _ready() -> void:
 	name_label.text = character_data.full_name()
 		
 func _process(_delta: float) -> void:
-	var velocity_x: float = Input.get_axis("move_left", "move_right") * character_data.speed
-	var velocity_y: float = _calculate_velocity_y()
-	velocity = Vector2(velocity_x, velocity_y)
+	velocity.x = Input.get_axis("move_left", "move_right") * character_data.speed
+	velocity.y = _calculate_velocity_y()
 	character_state.moving(velocity)
 	move_and_slide()
 	if Input.is_action_just_pressed("attack"):
