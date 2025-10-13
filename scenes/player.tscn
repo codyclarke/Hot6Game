@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dpgvvdu16f4k4"]
+[gd_scene load_steps=20 format=3 uid="uid://dpgvvdu16f4k4"]
 
 [ext_resource type="Script" uid="uid://bgxn1p4stdpdx" path="res://scenes/player.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://d1o8vhu5uhll2" path="res://sprites/contra-jump.png" id="3_dqkch"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://ce305hfi7ujp2" path="res://sprites/contra-run.png" id="4_qlg0r"]
 [ext_resource type="Script" uid="uid://ux63oek03ptn" path="res://scenes/gun_location.gd" id="5_qlg0r"]
 [ext_resource type="Script" uid="uid://dy6dr8y040wyu" path="res://scenes/player_sprite.gd" id="5_tuyoq"]
+[ext_resource type="Script" uid="uid://cnxbw3tv2wyv4" path="res://state/character_state.gd" id="7_fjrip"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dqkch"]
 size = Vector2(14, 35)
@@ -122,8 +123,10 @@ vertical_alignment = 1
 position = Vector2(14, -5)
 script = ExtResource("5_qlg0r")
 
-[connection signal="move_left" from="." to="PlayerSprite" method="_on_player_move_left"]
-[connection signal="move_left" from="." to="GunLocation" method="_on_player_move_left"]
-[connection signal="move_right" from="." to="PlayerSprite" method="_on_player_move_right"]
-[connection signal="move_right" from="." to="GunLocation" method="_on_player_move_right"]
-[connection signal="stop" from="." to="PlayerSprite" method="_on_player_stop"]
+[node name="CharacterState" type="Node" parent="."]
+script = ExtResource("7_fjrip")
+metadata/_custom_type_script = "uid://cnxbw3tv2wyv4"
+
+[connection signal="moved" from="CharacterState" to="PlayerSprite" method="_on_character_moved"]
+[connection signal="turned" from="CharacterState" to="PlayerSprite" method="_on_character_turned"]
+[connection signal="turned" from="CharacterState" to="GunLocation" method="_on_character_turned"]

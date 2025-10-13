@@ -1,17 +1,11 @@
 extends AnimatedSprite2D
 
-
-func _on_player_move_left(_velocity: float, is_on_floor: bool) -> void:
-	play('run' if is_on_floor else 'jump')
-	if !flip_h:
-		flip_h = true
-
-
-func _on_player_move_right(_velocity: float, is_on_floor: bool) -> void:
-	play('run' if is_on_floor else 'jump')
-	if flip_h:
-		flip_h = false
+func _on_character_moved(movement_type: CharacterState.MovementType) -> void:
+	match movement_type:
+		CharacterState.MovementType.IDLE: play('idle')
+		CharacterState.MovementType.RUNNING: play('run')
+		CharacterState.MovementType.JUMPING: play('jump')
 
 
-func _on_player_stop(is_on_floor: bool) -> void:
-	play('idle' if is_on_floor else 'jump')
+func _on_character_turned(direction: CharacterState.LookDirection) -> void:
+	flip_h = true if direction == CharacterState.LookDirection.LEFT else false

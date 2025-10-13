@@ -1,15 +1,12 @@
 extends Node2D
 
-@onready var player_sprite = $"../PlayerSprite"
-var _flipped = false
-
-func _on_player_move_left(_velocity: float, _is_on_floor: bool) -> void:
-	if !_flipped:
-		position.x *= -1
-		_flipped = true
+var look_direction: CharacterState.LookDirection = CharacterState.LookDirection.RIGHT:
+	set(value):
+		if value != null && look_direction != null && value != look_direction:
+			position.x *= -1
+		look_direction = value
 
 
-func _on_player_move_right(_velocity: float, _is_on_floor: bool) -> void:
-	if _flipped:
-		position.x *= -1
-		_flipped = false
+func _on_character_turned(direction: CharacterState.LookDirection) -> void:
+	look_direction = direction
+		
