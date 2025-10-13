@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Hot6"
-run/main_scene="uid://d4xg3vi3wcge"
+run/main_scene="uid://do0i7b3683q5w"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
 

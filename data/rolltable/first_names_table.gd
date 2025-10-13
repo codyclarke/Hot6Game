@@ -1,4 +1,4 @@
-class_name FirstNamesTable extends Node
+class_name FirstNamesTable
 
 var _random = RandomNumberGenerator.new()
 var _names: Array[String] = [
@@ -47,6 +47,7 @@ var _names: Array[String] = [
 	"Tony",
 	"Tornado",
 	"Ulysses",
+	"Zeke",
 	"Zip",
 ]
 

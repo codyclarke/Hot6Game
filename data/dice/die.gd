@@ -1,4 +1,4 @@
-class_name Die extends Node
+class_name Die
 
 @export var sides: int = 6
 var _random = RandomNumberGenerator.new()

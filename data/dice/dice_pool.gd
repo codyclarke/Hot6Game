@@ -1,4 +1,4 @@
-class_name DicePool extends Node
+class_name DicePool
 
 @export var dice: Array[Die]
 

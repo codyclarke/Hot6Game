@@ -1,12 +1,13 @@
-class_name TitlesTable extends Node
+class_name TitlesTable
 
 
 var _random = RandomNumberGenerator.new()
 var _names: Array[CharacterTitle] = [
 	CharacterTitle.create("Doctor", "Dr.", ""),
-	CharacterTitle.create("Lieutenant", "Lt.", ""),
+	CharacterTitle.create("Doctor of Philosophy", "", ", PhD"),
+	CharacterTitle.create("Lieutaenant", "Lt.", ""),
 	CharacterTitle.create("Lieutenant Colonel", "Lt. Col.", ""),
-	CharacterTitle.create("Doctor of Philosophy", "", ", PhD")
+	CharacterTitle.create("Sergeant", "Sgt.", "")
 ]
 
 func roll() -> CharacterTitle:

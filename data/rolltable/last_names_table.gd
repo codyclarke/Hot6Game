@@ -1,4 +1,4 @@
-class_name LastNamesTable extends Node
+class_name LastNamesTable
 
 var _random = RandomNumberGenerator.new()
 var _names: Array[String] = [
@@ -15,6 +15,7 @@ var _names: Array[String] = [
 	"Dingler",
 	"Fantastic",
 	"Ferocious",
+	"Fister",
 	"Freestyle",
 	"Glasseater",
 	"Gymnasium",
@@ -34,7 +35,7 @@ var _names: Array[String] = [
 	"Strongbody",
 	"Whiplash",
 	"You-Know-It!",
-	"Zweihander",
+	"Zyxx",
 ]
 
 func roll() -> String:

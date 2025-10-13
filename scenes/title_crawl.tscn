@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=3 uid="uid://do0i7b3683q5w"]
+
+[ext_resource type="Script" uid="uid://d12x8rt88hd45" path="res://scenes/title_crawl_text.gd" id="1_26blj"]
+[ext_resource type="FontFile" uid="uid://bdwdf2n3na7xy" path="res://resources/fonts/AtariClassicChunky.ttf" id="1_d3p50"]
+[ext_resource type="Script" uid="uid://bgj6bmqtbek1f" path="res://scenes/timer.gd" id="3_1lsvd"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_d3p50"]
+font = ExtResource("1_d3p50")
+font_size = 24
+
+[sub_resource type="Gradient" id="Gradient_1lsvd"]
+offsets = PackedFloat32Array(0, 0.2003546, 0.38120568)
+colors = PackedColorArray(0.2875627, 0.042557135, 0.07292972, 1, 0.5066537, 0.15602517, 0.20780614, 1, 0.12038336, 5.790731e-08, 3.008172e-08, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ef5qx"]
+gradient = SubResource("Gradient_1lsvd")
+
+[node name="TitleCrawl" type="Node2D"]
+
+[node name="TitleCrawlText" type="Label" parent="."]
+z_index = 5
+offset_left = 25.0
+offset_top = 25.0
+offset_right = 775.0
+offset_bottom = 575.0
+label_settings = SubResource("LabelSettings_d3p50")
+autowrap_mode = 2
+script = ExtResource("1_26blj")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.05
+autostart = true
+script = ExtResource("3_1lsvd")
+
+[node name="Background" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Background"]
+position = Vector2(396.00003, 258.125)
+rotation = 4.712389
+scale = Vector2(3.1328132, 963.75)
+texture = SubResource("GradientTexture1D_ef5qx")
+
+[connection signal="finished_printing" from="TitleCrawlText" to="Timer" method="_on_title_crawl_text_finished_printing"]
+[connection signal="timeout" from="Timer" to="TitleCrawlText" method="_on_timer_timeout"]
