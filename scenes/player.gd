@@ -1,6 +1,8 @@
 extends CharacterBody2D
 
-@onready var stage = $"../"
+@export var player_data: PlayerData = PlayerData.new()
+@export var character_data: CharacterData = player_data.generate()
+
 @onready var player_sprite = $PlayerSprite
 @onready var name_label: Label = $NameLabel
 @onready var gun_location: Node2D = $GunLocation
@@ -10,7 +12,16 @@ extends CharacterBody2D
 
 @export var character_data: CharacterData = PlayerData.new().generate()
 
+@onready var character_state = $CharacterState
+@onready var gravity: GravityState = GravityState.new()	
+
 var start_position : Vector2
+
+func _init() -> void:
+	# need to add created nodes as children so they're destroyed when Player is.
+	#  else, we get a memory leak.
+	add_child(player_data)
+	add_child(character_data)
 
 func _ready() -> void:
 	name_label.text = character_data.full_name()

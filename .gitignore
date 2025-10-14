@@ -1,11 +1,14 @@
 # Created by https://www.toptal.com/developers/gitignore/api/godot,windows,macos
 # Edit at https://www.toptal.com/developers/gitignore?templates=godot,windows,macos
 
+### Project-specific ###
+# ignore generated test reports
+reports/
+
 ### Godot ###
 # Godot 4+ specific ignores
 .godot/
 /android/
-addons/
 
 # Godot-specific ignores
 .import/
