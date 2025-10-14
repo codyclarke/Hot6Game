@@ -3,6 +3,7 @@ class_name TitlesTable
 
 var _random = RandomNumberGenerator.new()
 var _names: Array[CharacterTitle] = [
+	CharacterTitle.create("Corporal", "Cpl.", ""),
 	CharacterTitle.create("Doctor", "Dr.", ""),
 	CharacterTitle.create("Doctor of Philosophy", "", ", PhD"),
 	CharacterTitle.create("Lieutaenant", "Lt.", ""),

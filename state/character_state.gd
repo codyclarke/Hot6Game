@@ -6,7 +6,6 @@ enum MovementType { IDLE, RUNNING, JUMPING }
 signal turned(direction: LookDirection)
 signal moved(movement_type: MovementType)
 
-
 var look_direction: LookDirection = LookDirection.RIGHT:
 	set(value):
 		if value == look_direction: pass
@@ -19,6 +18,7 @@ var movement_type: MovementType:
 		if value == movement_type: pass
 		moved.emit(value)
 		movement_type = value
+		
 
 func moving(_velocity: Vector2) -> void:
 	_set_look_direction(_velocity.x)

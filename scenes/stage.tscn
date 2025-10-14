@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://nakxk67qh7dl" path="res://sprites/stage/platforms.png" id="3_vcsse"]
 [ext_resource type="Texture2D" uid="uid://bx77i0ld64dpm" path="res://sprites/stage/walls.png" id="4_2so7o"]
 [ext_resource type="Script" uid="uid://co3on8i2asy04" path="res://scenes/camera_2d.gd" id="4_6c5u0"]
-[ext_resource type="Script" uid="uid://ry8dqmilblcx" path="res://scenes/stage_boundaries.gd" id="7_st0q7"]
+[ext_resource type="Script" path="res://scenes/stage_boundaries.gd" id="7_st0q7"]
 
 [sub_resource type="Gradient" id="Gradient_knoaa"]
 offsets = PackedFloat32Array(0, 0.6208113)
