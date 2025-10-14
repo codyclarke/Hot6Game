@@ -21,6 +21,7 @@ var movement_type: MovementType:
 		if value == movement_type: pass
 		moved.emit(value,direction_sign)
 		movement_type = value
+		
 
 func moving(_velocity: Vector2, is_on_wall:bool) -> void:
 	_set_look_direction(_velocity.x)

@@ -27,6 +27,7 @@ var _names: Array[String] = [
 	"Manhattan",
 	"Mojito",
 	"Monsoon",
+	"Pull-up",
 	"Spittoon",
 	"Tarantula",
 	"Tittleman",
