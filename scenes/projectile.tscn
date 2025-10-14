@@ -84,19 +84,15 @@ size = Vector2(37, 19)
 
 [node name="Fireblast" type="Area2D"]
 script = ExtResource("1_c8fcr")
-speed = null
-rotation_degrees_per_second = null
-projectile_screen_buffer = null
-direction = null
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(-16, 0)
+position = Vector2(25.89383, -2.928711)
 scale = Vector2(3.6578195, 3.6726074)
 sprite_frames = SubResource("SpriteFrames_xo60o")
 animation = &"flame_hit"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(9.5, 1.5)
+position = Vector2(51.393833, -1.4287109)
 shape = SubResource("RectangleShape2D_q3m7n")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
