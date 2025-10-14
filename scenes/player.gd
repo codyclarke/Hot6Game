@@ -10,9 +10,6 @@ extends CharacterBody2D
 @onready var wall_slide_speed: float = 3.0
 @onready var projectile: PackedScene = preload("res://scenes/projectile.tscn")
 
-@export var character_data: CharacterData = PlayerData.new().generate()
-
-@onready var character_state = $CharacterState
 @onready var gravity: GravityState = GravityState.new()	
 
 var start_position : Vector2
@@ -43,12 +40,12 @@ func _calculate_velocity(delta) ->  void:
 		if is_on_wall():
 			velocity.x = -character_data.speed*3 if character_state.look_direction == CharacterState.LookDirection.RIGHT else character_data.speed*3
 	elif is_on_wall():
-		velocity.y = min(velocity.y + stage.gravity/wall_slide_speed, stage.max_velocity)
+		velocity.y = min(velocity.y + gravity.acceleration/wall_slide_speed, gravity.max_velocity)
 
 	elif is_on_floor():
 		velocity.y = 0
 	elif !is_on_wall():
-		velocity.y = min(velocity.y + stage.gravity, stage.max_velocity)
+		velocity.y = min(velocity.y + gravity.acceleration, gravity.max_velocity)
 
 func spawn_projectile():
 	var direction = 1 if character_state.look_direction == CharacterState.LookDirection.RIGHT else -1
