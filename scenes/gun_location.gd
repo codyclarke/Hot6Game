@@ -18,4 +18,6 @@ func _on_character_turned(direction: CharacterState.LookDirection) -> void:
 func _on_character_state_moved(movement_type: CharacterState.MovementType, direction_sign: int) -> void:
 	match movement_type:
 		CharacterState.MovementType.RUNNING: position = Vector2(gun_position["running"].x*direction_sign,gun_position["running"].y)
+		CharacterState.MovementType.JUMPING: position = Vector2(gun_position["running"].x*direction_sign,gun_position["running"].y)
+		CharacterState.MovementType.IDLE: position = Vector2(gun_position["running"].x*direction_sign,gun_position["running"].y)
 		CharacterState.MovementType.WALLGRAB: position = Vector2(gun_position["wallgrab"].x*direction_sign,gun_position["wallgrab"].y)

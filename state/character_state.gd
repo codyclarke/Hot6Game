@@ -11,14 +11,14 @@ var direction_sign : int = 1
 
 var look_direction: LookDirection = LookDirection.RIGHT:
 	set(value):
-		if value == look_direction: pass
+		if value == look_direction: return
 		turned.emit(value)
 		look_direction = value
 
 
 var movement_type: MovementType:
 	set(value):
-		if value == movement_type: pass
+		if value == movement_type: return
 		moved.emit(value,direction_sign)
 		movement_type = value
 		
