@@ -13,7 +13,7 @@ func init(position: Vector2, direction: int) -> void:
 	self.direction = direction
 	scale *= 1.0-(randf()*0.2)-0.1
 	if direction < 0:
-		get_child(0).flip_h = true
+		scale.x *= -1.0
 	
 func _physics_process(delta: float) -> void:
 	_normal_position = Vector2(_normal_position.x + (speed * delta *direction), _normal_position.y)
