@@ -119,6 +119,10 @@ sprite_frames = SubResource("SpriteFrames_f1ej7")
 animation = &"wallgrab"
 script = ExtResource("5_tuyoq")
 
+[node name="GunLocation" type="Node2D" parent="PlayerSprite"]
+position = Vector2(16, -6)
+script = ExtResource("5_qlg0r")
+
 [node name="NameLabel" type="Label" parent="."]
 offset_left = -23.0
 offset_top = -37.0
@@ -129,16 +133,11 @@ label_settings = SubResource("LabelSettings_qlg0r")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="GunLocation" type="Node2D" parent="."]
-position = Vector2(16, -10)
-script = ExtResource("5_qlg0r")
-
 [node name="CharacterState" type="Node" parent="."]
 script = ExtResource("7_fjrip")
 metadata/_custom_type_script = "uid://cnxbw3tv2wyv4"
 
 [connection signal="moved" from="CharacterState" to="." method="_on_character_state_moved"]
 [connection signal="moved" from="CharacterState" to="PlayerSprite" method="_on_character_moved"]
-[connection signal="moved" from="CharacterState" to="GunLocation" method="_on_character_state_moved"]
-[connection signal="turned" from="CharacterState" to="PlayerSprite" method="_on_character_turned"]
-[connection signal="turned" from="CharacterState" to="GunLocation" method="_on_character_turned"]
+[connection signal="moved" from="CharacterState" to="PlayerSprite/GunLocation" method="_on_character_state_moved"]
+[connection signal="turned" from="CharacterState" to="PlayerSprite" method="_on_character_state_turned"]
