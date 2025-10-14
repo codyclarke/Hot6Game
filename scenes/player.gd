@@ -5,7 +5,7 @@ extends CharacterBody2D
 
 @onready var player_sprite = $PlayerSprite
 @onready var name_label: Label = $NameLabel
-@onready var gun_location: Node2D = $GunLocation
+@onready var gun_location: Node2D = $PlayerSprite/GunLocation
 @onready var projectile: PackedScene = preload("res://scenes/projectile.tscn")
 
 @onready var character_state = $CharacterState
@@ -41,19 +41,16 @@ func _calculate_velocity(delta) ->  void:
 	elif is_on_floor():
 		velocity.y = 0
 	elif !is_on_wall():
-		velocity.y = min(velocity.y + stage.gravity, stage.max_velocity)
+		velocity.y = min(velocity.y + gravity.acceleration, gravity.max_velocity)
 
 func spawn_projectile():
-	var direction = 1 if character_state.look_direction == CharacterState.LookDirection.RIGHT else -1
-	var  state = "wallgrab" if  character_state.movement_type == CharacterState.MovementType.WALLGRAB else "running"
-	direction = direction*-1 if state == "wallgrab" else direction
 	var bang = projectile.instantiate()
-	bang.init(gun_location.global_position, direction)
+	bang.init(gun_location.global_position, character_state.orient(1))
 	owner.add_child(bang)
 
 #used in stage_boundaries.gd to reset the position if the player goes out of bounds
 func reset_position():
 	position = start_position
 
-func _on_character_state_moved(movement_type: CharacterState.MovementType, _direction_sign: int) -> void:
+func _on_character_state_moved(movement_type: CharacterState.MovementType) -> void:
 	velocity.y = 0.0 if movement_type == CharacterState.MovementType.WALLGRAB else velocity.y 
