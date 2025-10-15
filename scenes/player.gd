@@ -8,6 +8,7 @@ extends CharacterBody2D
 @onready var gun_location: Node2D = $PlayerSprite/GunLocation
 @onready var character_state = $CharacterState
 @onready var wall_slide_speed: float = 3.0
+@onready var wall_jump_power: float = 3.0
 @onready var projectile: PackedScene = preload("res://scenes/projectile.tscn")
 
 @onready var gravity: GravityState = GravityState.new()	
@@ -38,7 +39,7 @@ func _calculate_velocity(delta) ->  void:
 	if (is_on_floor() || is_on_wall()) && Input.is_action_just_pressed("jump"):
 		velocity.y = character_data.jump_speed * -1
 		if is_on_wall():
-			velocity.x = -character_data.speed*3 if character_state.look_direction == CharacterState.LookDirection.RIGHT else character_data.speed*3
+			velocity.x = character_state.orient(character_data.speed*wall_jump_power)
 	elif is_on_wall():
 		velocity.y = min(velocity.y + gravity.acceleration/wall_slide_speed, gravity.max_velocity)
 
