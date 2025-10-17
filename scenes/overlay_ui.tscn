@@ -1,7 +1,100 @@
-[gd_scene load_steps=0 format=3 uid="uid://d1ymojc0en6hg"]
+[gd_scene load_steps=4 format=3 uid="uid://b1kk1b2610j76"]
+
+[sub_resource type="Gradient" id="Gradient_rsych"]
+offsets = PackedFloat32Array(0.17575757, 1)
+colors = PackedColorArray(0.21080211, 0.3357247, 0, 1, 0.52156866, 0.85490197, 0.3529412, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_bt2gj"]
+gradient = SubResource("Gradient_rsych")
+fill_from = Vector2(1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rsych"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(1, 0, 0, 0.87058824)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+corner_detail = 6
 
 [node name="OverlayUI" type="Control"]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 800.0
+offset_bottom = 600.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="TextureRect" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(800, 60)
+layout_mode = 0
+offset_right = 800.0
+offset_bottom = 60.0
+size_flags_horizontal = 3
+texture = SubResource("GradientTexture2D_bt2gj")
+expand_mode = 2
+
+[node name="ScreenVertContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 800.0
+offset_bottom = 600.0
+
+[node name="TopUIContainer" type="HBoxContainer" parent="ScreenVertContainer"]
+layout_mode = 2
+
+[node name="P1Container" type="VBoxContainer" parent="ScreenVertContainer/TopUIContainer"]
+z_index = 1
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="NameContainer" type="HBoxContainer" parent="ScreenVertContainer/TopUIContainer/P1Container"]
+layout_mode = 2
+
+[node name="P1Label" type="Label" parent="ScreenVertContainer/TopUIContainer/P1Container/NameContainer"]
+layout_mode = 2
+text = "Player 1:"
+
+[node name="P1Name" type="Label" parent="ScreenVertContainer/TopUIContainer/P1Container/NameContainer"]
+layout_mode = 2
+
+[node name="HealthContainer" type="HBoxContainer" parent="ScreenVertContainer/TopUIContainer/P1Container"]
+layout_mode = 2
+
+[node name="TextureProgressBar" type="ProgressBar" parent="ScreenVertContainer/TopUIContainer/P1Container/HealthContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_styles/fill = SubResource("StyleBoxFlat_rsych")
+value = 100.0
+
+[node name="P2Container" type="VBoxContainer" parent="ScreenVertContainer/TopUIContainer"]
+z_index = 1
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="NameContainer" type="HBoxContainer" parent="ScreenVertContainer/TopUIContainer/P2Container"]
+layout_mode = 2
+
+[node name="P2Label" type="Label" parent="ScreenVertContainer/TopUIContainer/P2Container/NameContainer"]
+layout_mode = 2
+text = "Player 2:"
+
+[node name="P2Name" type="Label" parent="ScreenVertContainer/TopUIContainer/P2Container/NameContainer"]
+layout_mode = 2
+
+[node name="HealthContainer" type="HBoxContainer" parent="ScreenVertContainer/TopUIContainer/P2Container"]
+layout_mode = 2
+
+[node name="TextureProgressBar" type="ProgressBar" parent="ScreenVertContainer/TopUIContainer/P2Container/HealthContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_styles/fill = SubResource("StyleBoxFlat_rsych")
+value = 75.0
+
+[node name="HSeparator" type="HSeparator" parent="ScreenVertContainer"]
+layout_mode = 2

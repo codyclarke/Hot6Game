@@ -25,13 +25,13 @@ func _ready() -> void:
 	name_label.text = character_data.full_name()
 	start_position = position
 
-func _process(_delta: float) -> void:
+#func _process(_delta: float) -> void:
+
+func _physics_process(delta: float) -> void:
 	move_and_slide()
 	character_state.moving(velocity,is_on_wall())
 	if Input.is_action_just_pressed("attack"):
 		spawn_projectile()
-
-func _physics_process(delta: float) -> void:
 	_calculate_velocity(delta)
 	
 func _calculate_velocity(delta) ->  void:
@@ -39,13 +39,12 @@ func _calculate_velocity(delta) ->  void:
 	if (is_on_floor() || is_on_wall()) && Input.is_action_just_pressed("jump"):
 		velocity.y = character_data.jump_speed * -1
 		if is_on_wall():
-			velocity.x = character_state.orient(character_data.speed*wall_jump_power)
+			velocity.x = character_state.orient(-character_data.speed*wall_jump_power)
 	elif is_on_wall():
 		velocity.y = min(velocity.y + gravity.acceleration/wall_slide_speed, gravity.max_velocity)
-
-	elif is_on_floor():
-		velocity.y = 0
-	elif !is_on_wall():
+	#elif is_on_floor():
+		#velocity.y = 0
+	elif !is_on_wall() && !is_on_floor():
 		velocity.y = min(velocity.y + gravity.acceleration, gravity.max_velocity)
 
 func spawn_projectile():
