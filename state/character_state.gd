@@ -27,8 +27,8 @@ var movement_type: MovementType:
 			return
 		moved.emit(value)
 		movement_type = value
-		if value == MovementType.WALLGRAB:
-			self._turn()
+		#if value == MovementType.WALLGRAB:
+			#self._turn()
 		
 
 func moving(_velocity: Vector2, is_on_wall:bool) -> void:

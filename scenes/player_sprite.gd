@@ -7,7 +7,7 @@ func _on_character_moved(movement_type: CharacterState.MovementType) -> void:
 		CharacterState.MovementType.JUMPING: play('jump'); offset.x=0
 		CharacterState.MovementType.WALLGRAB: 
 			play('wallgrab')
-			offset.x = 16
+			offset.x = -16
 
 
 func _on_character_state_turned(direction: CharacterState.LookDirection) -> void:
