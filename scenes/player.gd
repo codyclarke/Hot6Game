@@ -44,7 +44,7 @@ func _calculate_velocity(delta) ->  void:
 		velocity.y = min(velocity.y + gravity.acceleration/wall_slide_speed, gravity.max_velocity)
 	#elif is_on_floor():
 		#velocity.y = 0
-	elif !is_on_wall() && !is_on_floor():
+	elif !is_on_wall():
 		velocity.y = min(velocity.y + gravity.acceleration, gravity.max_velocity)
 
 func spawn_projectile():
