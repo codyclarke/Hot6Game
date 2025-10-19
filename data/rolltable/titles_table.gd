@@ -8,7 +8,8 @@ var _names: Array[CharacterTitle] = [
 	CharacterTitle.create("Doctor of Philosophy", "", ", PhD"),
 	CharacterTitle.create("Lieutaenant", "Lt.", ""),
 	CharacterTitle.create("Lieutenant Colonel", "Lt. Col.", ""),
-	CharacterTitle.create("Sergeant", "Sgt.", "")
+	CharacterTitle.create("Sergeant", "Sgt.", ""),
+	CharacterTitle.create("Little", "Lil'", "")
 ]
 
 func roll() -> CharacterTitle:
